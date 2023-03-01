@@ -1,0 +1,238 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://green__0003_turn_1.png" type="Texture" id=1]
+[ext_resource path="res://game/WhatsApp Image 2022-06-04 at 21.19.52.jpeg" type="Texture" id=2]
+[ext_resource path="res://scripts/player.gd" type="Script" id=3]
+[ext_resource path="res://WhatsApp Image 2022-06-04 at 21.19.51.jpeg" type="Texture" id=4]
+[ext_resource path="res://WhatsApp Image 2022-06-04 at 21.19.52 (1).jpeg" type="Texture" id=5]
+[ext_resource path="res://mot.tscn" type="PackedScene" id=6]
+
+[sub_resource type="AnimatedTexture" id=14]
+
+[sub_resource type="Animation" id=15]
+resource_name = "IDLE"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 73.52
+height = 250.534
+
+[sub_resource type="PhysicsMaterial" id=5]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 101.114, 1.21658 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 1.48022, 12.8527 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 123.471, 12.7635 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 270.221, 9.92462 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 246.579, 24.163 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 98.2623, 16.2253 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 63.8153, 12.4745 )
+
+[node name="fase1" type="Node"]
+
+[node name="WhatsAppImage2022-06-04At211952" type="Sprite" parent="."]
+position = Vector2( 11.8081, -4.58401 )
+scale = Vector2( 2.50203, 1.40488 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="WhatsAppImage2022-06-04At211953" type="Sprite" parent="."]
+position = Vector2( 1921.19, 359.983 )
+scale = Vector2( 2.50849, 1.40402 )
+texture = ExtResource( 2 )
+
+[node name="WhatsAppImage2022-06-04At211951" type="Sprite" parent="."]
+position = Vector2( 3203.07, 296.207 )
+scale = Vector2( 2.508, 1.64367 )
+texture = ExtResource( 4 )
+
+[node name="WhatsAppImage2022-06-04At211954" type="Sprite" parent="."]
+position = Vector2( 4490, 299.035 )
+scale = Vector2( 2.508, 1.64367 )
+texture = ExtResource( 4 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1542.57, 518.613 )
+rotation = 2.23517e-08
+scale = Vector2( 2.464, 2.998 )
+
+[node name="WhatsAppImage2022-06-04At211952(1)" type="Sprite" parent="."]
+position = Vector2( 5772.01, 299.787 )
+scale = Vector2( 2.47847, 1.63508 )
+texture = ExtResource( 5 )
+
+[node name="PLAYER" type="KinematicBody2D" parent="."]
+position = Vector2( 523.457, 534.362 )
+rotation = -0.0988134
+scale = Vector2( 1.9, 1.9 )
+collision/safe_margin = 0.001
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="PLAYER"]
+position = Vector2( -104.927, -9.26899 )
+rotation = 0.10476
+scale = Vector2( 0.149873, 0.170502 )
+texture = ExtResource( 1 )
+normal_map = SubResource( 14 )
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PLAYER/Sprite"]
+autoplay = "IDLE"
+anims/IDLE = SubResource( 15 )
+anims/RESET = SubResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PLAYER"]
+position = Vector2( -103.222, -5.70593 )
+scale = Vector2( 0.225, 0.165 )
+shape = SubResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="PLAYER"]
+position = Vector2( -243.268, -310.599 )
+rotation = 0.0988134
+scale = Vector2( 0.526316, 0.526316 )
+anchor_mode = 0
+current = true
+limit_left = -9999981
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 1.0
+drag_margin_top = 1.0
+drag_margin_right = 1.0
+drag_margin_bottom = 1.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="chao" type="StaticBody2D" parent="."]
+position = Vector2( 1284.28, 667.206 )
+scale = Vector2( 32, 34 )
+physics_material_override = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao"]
+position = Vector2( 61.3628, 0.0303631 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="chao"]
+position = Vector2( 61.002, -19.5062 )
+shape = SubResource( 3 )
+
+[node name="PAREDE 1" type="StaticBody2D" parent="."]
+position = Vector2( 1284.28, 667.206 )
+scale = Vector2( 32, 34 )
+physics_material_override = SubResource( 5 )
+
+[node name="PAREDE 1" type="CollisionShape2D" parent="PAREDE 1"]
+position = Vector2( -40.1488, -8.73127 )
+shape = SubResource( 6 )
+
+[node name="PAREDE2" type="StaticBody2D" parent="."]
+position = Vector2( 1284.28, 667.206 )
+scale = Vector2( 32, 34 )
+physics_material_override = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PAREDE2"]
+position = Vector2( 160.726, -10.4204 )
+shape = SubResource( 6 )
+
+[node name="predio" type="StaticBody2D" parent="."]
+position = Vector2( 875.707, 397.526 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="predio"]
+position = Vector2( -743.482, -99.4657 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="predio"]
+position = Vector2( 537.955, -94.9738 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="loja" type="StaticBody2D" parent="."]
+position = Vector2( 577.302, 229.852 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="loja"]
+position = Vector2( 298.405, 167.202 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="loja"]
+position = Vector2( 1583.79, 169.484 )
+shape = SubResource( 7 )
+one_way_collision = true
+
+[node name="bar" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bar"]
+position = Vector2( 2977.92, 374.334 )
+shape = SubResource( 9 )
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bar"]
+position = Vector2( 4266.5, 374.334 )
+shape = SubResource( 9 )
+one_way_collision = true
+
+[node name="pred deserto" type="StaticBody2D" parent="."]
+position = Vector2( 12.7272, -15.0454 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pred deserto"]
+position = Vector2( 3674.49, 377.173 )
+shape = SubResource( 10 )
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="pred deserto"]
+position = Vector2( 4961.46, 380.124 )
+shape = SubResource( 10 )
+one_way_collision = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 5772.01, 299.787 )
+scale = Vector2( 2.47847, 1.63508 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -144.141, -13.5262 )
+shape = SubResource( 11 )
+one_way_collision = true
+
+[node name="KinematicBody2D2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 3003.41, 507.353 )
+rotation = -6.28319
+scale = Vector2( 2.272, 2.42 )

@@ -1,0 +1,4 @@
+Este projeto foi realizado na materia de introdução a jogos digitais como uma avaliação 
+realizado por mim e mais 3 amigos 
+ultilizando godot engine 
+e algumas sprites free
